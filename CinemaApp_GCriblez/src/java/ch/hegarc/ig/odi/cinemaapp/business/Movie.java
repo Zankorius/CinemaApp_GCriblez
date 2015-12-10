@@ -70,6 +70,19 @@ public class Movie implements Serializable {
         this.persons = persons;
     }
     
+    /**
+     * Ajoute la personne au film et le film à la personne
+     * @param movie 
+     */
+    public void addPerson(Person person) {
+        person.getMovies().put(id, this);
+        this.persons.put(person.getId(), person);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" + "id=" + id + ", name=" + name + ", producer=" + producer + ", persons=" + persons + '}';
+    }
     
     
 }
