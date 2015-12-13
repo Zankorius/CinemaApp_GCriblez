@@ -5,12 +5,82 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    >
     <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Facelet viewMovie</title>
     </head>
     <body>
-        <div>TODO write content</div>
+
+        <f:view>
+
+            <h1><h:outputText value="#{resrc.pageName}"></h:outputText></h1>
+
+            <br/><br/>
+
+
+            <h:panelGrid border="0" columns="2">
+            <h:outputLabel value="ID : " />
+            <h:outputText value="#{viewMovieBean.movie.id}" />
+            <h:outputLabel value="#{resrc.filmName} : " />
+            <h:outputText value="#{viewMovieBean.movie.name}" />
+            <h:outputLabel value="##{resrc.producer} : " />
+            <h:outputText value="#{viewMovieBean.movie.producer}" />
+            </h:panelGrid>
+
+
+
+            <br/><br/>
+            <h3><h:outputText value="#{resrc.persList}"/></h3>
+
+            <h:form id="listPers">
+                <h:dataTable id="dtPersons" var="pers" value="#{viewMovieBean.movie.persons}">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.firstName}" />
+                        </f:facet>
+                        <h:outputText id="firstName" value="#{pers.firstName}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{pers.lastName}"/>
+                        </f:facet>
+                        <h:outputText id="lastName" value="#{pers.lastName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.numberMovie}"/>
+                        </f:facet>
+                        <h:outputText id="countMovie" value="#{cinemaBean.countWatchingMovie(pers)}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+
+
+                <br/><br/>
+            </h:form>
+
+            <h:form id="selectLangLink">
+                <h:commandButton image="ressources/en.jpg" action="#{langBean.toEnglish}"/>
+                <h:commandButton image="ressources/fr.png" action="#{langBean.toFrench}"/>
+            </h:form>
+
+            <h:form id="selectLangItem">
+                <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
+                    <f:selectItem itemValue="1" itemLabel="FR"/>
+                    <f:selectItem itemValue="2" itemLabel="EN"/>
+                </h:selectOneMenu>
+            </h:form>
+
+        </f:view>
     </body>
 </html>
