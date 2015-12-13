@@ -5,7 +5,7 @@
  */
 package ch.hegarc.ig.odi.cinemaapp.beans;
 
-import ch.hegarc.ig.odi.cinemaapp.business.Person;
+import ch.hegarc.ig.odi.cinemaapp.business.Movie;
 import ch.hegarc.ig.odi.cinemaapp.service.Services;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -13,43 +13,43 @@ import java.io.Serializable;
 import javax.inject.Inject;
 
 /**
- * Bean pour gérer la vue d'une personne et des films qu'il a visionné
+ * Bean pour gérer la vue d'un film et la liste des personnes qui l'ont vue
  * @author gary.criblez
  */
-@Named(value = "viewPersonBean")
+@Named(value = "viewMovieBean")
 @SessionScoped
-public class ViewPersonBean implements Serializable {
+public class ViewMovieBean implements Serializable {
     
     @Inject
     Services services;
     
-    private Person person;
+    private Movie movie;
 
     /**
-     * Creates a new instance of ViewPersonBean
+     * Creates a new instance of ViewCinemaBean
      */
-    public ViewPersonBean() {
+    public ViewMovieBean() {
     }
 
-    public Person getPerson() {
-        return person;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
     
     /**
-     * Méthode permettant d'afficher une personne et ses détails.
-     * @param pers La personne a afficher
+     * Méthode permettant d'afficher un film et ses détails.
+     * @param mov Le film a afficher
      * @return "show" si le client est valide, "error" si le paramètre est null
      */
-    public String showPerson(Person pers){
-        if(pers != null){
-            person = pers;
+    public String showMovie(Movie mov){
+        if(mov != null){
+            movie = mov;
             return "show";
         }else{
-            person = null;
+            movie = null;
             return "error";
         }
     }

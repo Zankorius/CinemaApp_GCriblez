@@ -9,13 +9,15 @@ import ch.hegarc.ig.odi.cinemaapp.business.Movie;
 import ch.hegarc.ig.odi.cinemaapp.business.Person;
 import ch.hegarc.ig.odi.cinemaapp.service.Services;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
 /**
- *
+ * Bean pour gérer les listes de personnes et de films
  * @author gary.criblez
  */
 @Named(value = "cinemaBean")
@@ -29,9 +31,31 @@ public class CinemaBean implements Serializable {
     private DataModel<Person> persons;
 
     /**
-     * Creates a new instance of CinemaBean
+     * récupération de la liste de film et la liste de personne de la classe service
      */
-    public CinemaBean() {
+    @PostConstruct
+    public void init(){
+        movies = new ListDataModel<>();
+        movies.setWrappedData(services.getMoviesList());
+        
+        persons = new ListDataModel<>();
+        persons.setWrappedData(services.getPeopleList());
+    }
+
+    public DataModel<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(DataModel<Movie> movies) {
+        this.movies = movies;
+    }
+
+    public DataModel<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(DataModel<Person> persons) {
+        this.persons = persons;
     }
     
     
