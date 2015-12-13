@@ -58,6 +58,22 @@ public class CinemaBean implements Serializable {
         this.persons = persons;
     }
     
+    /**
+     * Compte le nombre de personne ayant vue le film
+     * @return int
+     */
+    public int countPersonWhoSeeMovie(Movie mov){
+        return mov.getPersons().size();
+    }
+    
+    /**
+     * Compte le nombre de film vue par la personne
+     * @return int
+     */
+    public int countWatchingMovie(Person pers){
+        return pers.getMovies().size();
+    }
+    
     
     
 }

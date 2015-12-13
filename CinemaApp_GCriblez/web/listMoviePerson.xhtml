@@ -22,7 +22,7 @@ and open the template in the editor.
             <br/><br/>
 
 
-            <h:outputText value="#{resrc.movList}"/>
+            <h3><h:outputText value="#{resrc.movList}"/></h3>
 
             <h:form id="listMov">
                 <h:dataTable id="dtMovies" var="mov" value="#{cinemaBean.movies}">
@@ -48,15 +48,16 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{resrc.numberPerson}"/>
                         </f:facet>
-                    <h:outputText id="countPerson" value="#{mov.countPersonWhoSeeMovie}"/>
+                        <h:outputText id="countPerson" value="#{cinemaBean.countPersonWhoSeeMovie(mov)}"/>
                     </h:column>
                 </h:dataTable>
+                </h:form>
                 <br/><br/>
 
 
 
                 <br/><br/>
-                <h:outputText value="#{resrc.persList}"/>
+                <h3><h:outputText value="#{resrc.persList}"/></h3>
 
                 <h:form id="listPers">
                     <h:dataTable id="dtPersons" var="pers" value="#{cinemaBean.persons}">
@@ -82,7 +83,7 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{resrc.numberMovie}"/>
                         </f:facet>
-                            <h:outputText id="countMovie" value="#{pers.countWatchingMovie}"/>
+                            <h:outputText id="countMovie" value="#{cinemaBean.countWatchingMovie(pers)}"/>
                     </h:column>
                     </h:dataTable>
                     <br/><br/>
