@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    >
+    <head>
+        <title>Facelet ListMoviePerson</title>
+    </head>
+    <body>
+
+        <f:view>
+
+            <h1><h:outputText value="#{resrc.pageName}"></h:outputText></h1>
+
+            <br/><br/>
+
+
+            <h:outputText value="#{resrc.movList}"/>
+
+            <h:form id="listMov">
+                <h:dataTable id="dtMovies" var="mov" value="#{cinemaBean.movies}">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:commandLink id="id" value="#{mov.id}" action="#{viewMovieBean.showMovie(mov)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.filmName}" />
+                        </f:facet>
+                        <h:outputText id="movieName" value="#{mov.name}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.producer}"/>
+                        </f:facet>
+                        <h:outputText id="producer" value="#{mov.producer}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+
+
+
+                <br/><br/>
+                <h:outputText value="#{resrc.persList}"/>
+
+                <h:form id="listPers">
+                    <h:dataTable id="dtPersons" var="pers" value="#{cinemaBean.persons}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resrc.firstName}" />
+                            </f:facet>
+                            <h:outputText id="firstName" value="#{pers.firstName}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{pers.lastName}"/>
+                            </f:facet>
+                            <h:outputText id="lastName" value="#{pers.lastName}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <br/><br/>
+
+
+                    <br/><br/>
+                </h:form>
+
+                <h:form id="selectLangLink">
+                    <h:commandButton image="ressources/en.jpg" action="#{langBean.toEnglish}"/>
+                    <h:commandButton image="ressources/fr.png" action="#{langBean.toFrench}"/>
+                </h:form>
+
+                <h:form id="selectLangItem">
+                    <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
+                        <f:selectItem itemValue="1" itemLabel="FR"/>
+                        <f:selectItem itemValue="2" itemLabel="EN"/>
+                    </h:selectOneMenu>
+                </h:form>
+
+        </f:view>
+    </body>
+</html>
