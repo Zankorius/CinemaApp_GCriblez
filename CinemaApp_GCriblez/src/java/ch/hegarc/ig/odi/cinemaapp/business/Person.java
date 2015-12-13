@@ -77,6 +77,14 @@ public class Person implements Serializable {
         movie.getPersons().put(id, this);
         this.movies.put(movie.getId(), movie);
     }
+    
+    /**
+     * Compte le nombre de film vue par la personne
+     * @return int
+     */
+    public int countWatchingMovie(){
+        return this.getMovies().size();
+    }
 
     @Override
     public String toString() {

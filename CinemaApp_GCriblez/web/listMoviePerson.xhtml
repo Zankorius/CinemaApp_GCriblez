@@ -44,6 +44,12 @@ and open the template in the editor.
                         </f:facet>
                         <h:outputText id="producer" value="#{mov.producer}"/>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.numberPerson}"/>
+                        </f:facet>
+                    <h:outputText id="countPerson" value="#{mov.countPersonWhoSeeMovie}"/>
+                    </h:column>
                 </h:dataTable>
                 <br/><br/>
 
@@ -72,6 +78,12 @@ and open the template in the editor.
                             </f:facet>
                             <h:outputText id="lastName" value="#{pers.lastName}"/>
                         </h:column>
+                        <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.numberMovie}"/>
+                        </f:facet>
+                            <h:outputText id="countMovie" value="#{pers.countWatchingMovie}"/>
+                    </h:column>
                     </h:dataTable>
                     <br/><br/>
 
