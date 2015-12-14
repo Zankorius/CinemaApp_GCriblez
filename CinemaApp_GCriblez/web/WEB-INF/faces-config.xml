@@ -28,8 +28,14 @@
             <to-view-id>/errorPage.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>home</from-action>
-            <to-view-id>/customerList.xhtml</to-view-id>
+            <from-action>#{viewPersonBean.showPerson(pers)}</from-action>
+            <from-outcome>show</from-outcome>
+            <to-view-id>/viewPerson.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{viewMovieBean.showMovie(mov)}</from-action>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/errorPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -39,6 +45,42 @@
         <navigation-case>
             <from-action>home</from-action>
             <to-view-id>/customerList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/viewMovie.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>home</from-action>
+            <to-view-id>/customerList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{viewPersonBean.showPerson(pers)}</from-action>
+            <from-outcome>show</from-outcome>
+            <to-view-id>/viewPerson.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{viewMovieBean.showMovie(mov)}</from-action>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/errorPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/viewPerson.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>home</from-action>
+            <to-view-id>/customerList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{viewMovieBean.showMovie(mov)}</from-action>
+            <from-outcome>show</from-outcome>
+            <to-view-id>/viewMovie.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{viewMovieBean.showMovie(mov)}</from-action>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/errorPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     

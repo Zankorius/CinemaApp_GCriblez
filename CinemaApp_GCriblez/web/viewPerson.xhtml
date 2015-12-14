@@ -24,44 +24,41 @@ and open the template in the editor.
 
             <h:panelGrid border="0" columns="2">
                 <h:outputLabel value="ID : " />
-                <h:outputText value="#{viewMovieBean.movie.id}" />
-                <h:outputLabel value="#{resrc.filmName} : " />
-                <h:outputText value="#{viewMovieBean.movie.name}" />
-                <h:outputLabel value="##{resrc.producer} : " />
-                <h:outputText value="#{viewMovieBean.movie.producer}" />
+                <h:outputText value="#{viewPersonBean.person.id}" />
+                <h:outputLabel value="#{resrc.firstName} : " />
+                <h:outputText value="#{viewPersonBean.person.firstName}" />
+                <h:outputLabel value="##{resrc.lastName} : " />
+                <h:outputText value="#{viewPersonBean.person.lastName}" />
             </h:panelGrid>
 
 
 
             <br/><br/>
-            <h3><h:outputText value="#{resrc.persList}"/></h3>
+            <h3><h:outputText value="#{resrc.movList}"/></h3>
 
-            <h:form id="listPers">
-                <h:dataTable id="dtPersons" var="pers" value="#{viewMovieBean.movie.persons}">
+            <h:form id="listMov">
+                <h:dataTable id="dtMovies" var="mov" value="#{viewPersonBean.person.movies}">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="ID"/>
                         </f:facet>
-                        <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
+                        <h:commandLink id="id" value="#{mov.id}" action="#{viewMovieBean.showMovie(mov)}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="#{resrc.firstName}" />
+                            <h:outputText value="#{resrc.filmName}" />
                         </f:facet>
-                        <h:outputText id="firstName" value="#{pers.firstName}" />
+                        <h:outputText id="movieName" value="#{mov.name}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="#{pers.lastName}"/>
+                            <h:outputText value="#{resrc.producer}"/>
                         </f:facet>
-                        <h:outputText id="lastName" value="#{pers.lastName}"/>
+                        <h:outputText id="producer" value="#{mov.producer}"/>
                     </h:column>
                 </h:dataTable>
-                <br/><br/>
-
-
-                <br/><br/>
             </h:form>
+
 
             <h:form>
                 <h:commandButton id="index" value="#{resrc.accueil}" action="home"/>
