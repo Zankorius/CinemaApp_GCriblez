@@ -23,12 +23,12 @@ and open the template in the editor.
 
 
             <h:panelGrid border="0" columns="2">
-            <h:outputLabel value="ID : " />
-            <h:outputText value="#{viewMovieBean.movie.id}" />
-            <h:outputLabel value="#{resrc.filmName} : " />
-            <h:outputText value="#{viewMovieBean.movie.name}" />
-            <h:outputLabel value="##{resrc.producer} : " />
-            <h:outputText value="#{viewMovieBean.movie.producer}" />
+                <h:outputLabel value="ID : " />
+                <h:outputText value="#{viewMovieBean.movie.id}" />
+                <h:outputLabel value="#{resrc.filmName} : " />
+                <h:outputText value="#{viewMovieBean.movie.name}" />
+                <h:outputLabel value="##{resrc.producer} : " />
+                <h:outputText value="#{viewMovieBean.movie.producer}" />
             </h:panelGrid>
 
 
@@ -68,6 +68,11 @@ and open the template in the editor.
 
                 <br/><br/>
             </h:form>
+
+            <h:form>
+                <h:commandButton id="index" value="#{resrc.accueil}" action="home"/>
+            </h:form>
+
 
             <h:form id="selectLangLink">
                 <h:commandButton image="ressources/en.jpg" action="#{langBean.toEnglish}"/>
