@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+ >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>resrc.success</title>
+    </head>
+    <body>
+        <f:view>
+            
+            
+            <h:outputText value="#{resrc.successAddPers}"></h:outputText>
+            
+            <br></br>
+            
+            <h:form>
+                <h:commandButton id="index" value="#{resrc.accueil}" action="home"/>
+            </h:form>
+            <br></br>
+            
+            <h:form id="selectLangItem">
+                <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
+                    <f:selectItem itemValue="1" itemLabel="FR"/>
+                    <f:selectItem itemValue="2" itemLabel="EN"/>
+                </h:selectOneMenu>
+            </h:form>
+            
+            
+        </f:view>
+    </body>
+</html>

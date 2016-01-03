@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <f:view>
+            <h1><h:outputText value="#{resrc.pageName}"></h:outputText></h1>
+
+            <h:outputText value="#{resrc.addpers}"></h:outputText>
+
+
+
+            <h:form id="addPerson">    
+
+
+
+                <h:panelGrid columns="3">
+                    <h:outputLabel for="id" value="#{resrc.id} : "></h:outputLabel>
+                    <h:inputText required="true" id="nom" value="#{createPersonBean.id}" maxlength="50">
+                        <f:validateLength minimum="1"/>
+                    </h:inputText>
+                    <h:message for="id" showDetail="true" showSummary="true"/>
+                    
+                    <h:outputLabel for="lastName" value="#{resrc.lastName} : "></h:outputLabel>
+                    <h:inputText required="true" id="nom" value="#{createPersonBean.lastName}" maxlength="50">
+                        <f:validateLength minimum="2"/>
+                    </h:inputText>
+                    <h:message for="lastName" showDetail="true" showSummary="true"/>
+
+                    <h:outputLabel for="firstName" value="#{resrc.firstName} : "></h:outputLabel>
+                    <h:inputText required="true" id="prenom" value="#{createPersonBean.firstName}" maxlength="50">
+                        <f:validateLength minimum="2"/>
+                    </h:inputText>
+                    <h:message for="firstName" showDetail="true" showSummary="true"/>
+
+                </h:panelGrid>
+
+                <!-- Bouton reset. -->
+                <h:commandButton id="reset" type="reset" value="#{resrc.resetform}"/>
+                <!-- Bouton de soumission du formulaire. -->
+                <h:commandButton id="submit" type="submit" value="#{resrc.createPers}" action="#{createPersonBean.submit()}"/>
+                <br/><br/>
+                <!-- Bouton de retour à la page d'accueil (index.xhtml). -->
+                <h:commandButton id="index" value="#{resrc.accueil}" action="home" immediate="true"/>
+                <!-- Affiche les messages d'erreurs. -->
+                <h:messages styleClass="erreur" showSummary="true" showDetail="false"/>
+
+            </h:form>
+
+            <br/><br/>
+            
+            <h:form id="selectLangItem">
+                <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
+                    <f:selectItem itemValue="1" itemLabel="FR"/>
+                    <f:selectItem itemValue="2" itemLabel="EN"/>
+                </h:selectOneMenu>
+            </h:form>
+
+        </f:view>
+    </body>
+</html>

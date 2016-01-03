@@ -37,6 +37,14 @@
             <from-outcome>error</from-outcome>
             <to-view-id>/errorPage.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-action>addPerson</from-action>
+            <to-view-id>/createPerson.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>addMovie</from-action>
+            <to-view-id>/createMovie.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     
@@ -44,7 +52,7 @@
         <from-view-id>/errorPage.xhtml</from-view-id>
         <navigation-case>
             <from-action>home</from-action>
-            <to-view-id>/customerList.xhtml</to-view-id>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -52,7 +60,7 @@
         <from-view-id>/viewMovie.xhtml</from-view-id>
         <navigation-case>
             <from-action>home</from-action>
-            <to-view-id>/customerList.xhtml</to-view-id>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{viewPersonBean.showPerson(pers)}</from-action>
@@ -70,7 +78,7 @@
         <from-view-id>/viewPerson.xhtml</from-view-id>
         <navigation-case>
             <from-action>home</from-action>
-            <to-view-id>/customerList.xhtml</to-view-id>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{viewMovieBean.showMovie(mov)}</from-action>
@@ -84,5 +92,57 @@
         </navigation-case>
     </navigation-rule>
     
+    
+    <navigation-rule>
+        <from-view-id>/createMovie.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{createMovieBean.submit()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createMovieOk.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{createMovieBean.submit()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/createMovie.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/createMovieOk.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/createPerson.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{createPersonBean.submit()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createPersonOk.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{createPersonBean.submit()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/createPerson.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/createPersonOk.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/listMoviePerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     
 </faces-config>

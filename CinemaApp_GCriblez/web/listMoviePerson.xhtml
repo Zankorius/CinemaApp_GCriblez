@@ -51,58 +51,62 @@ and open the template in the editor.
                         <h:outputText id="countPerson" value="#{cinemaBean.countPersonWhoSeeMovie(mov)}"/>
                     </h:column>
                 </h:dataTable>
-                </h:form>
                 <br/><br/>
+                <!-- Bouton d'ajout d'un nouveau film. -->
+            <h:commandButton value="#{resrc.movieAddButton}" action="addMovie"/>
+            </h:form>
+            <br/><br/>
 
 
 
-                <br/><br/>
-                <h3><h:outputText value="#{resrc.persList}"/></h3>
+            <br/><br/>
+            <h3><h:outputText value="#{resrc.persList}"/></h3>
 
-                <h:form id="listPers">
-                    <h:dataTable id="dtPersons" var="pers" value="#{cinemaBean.persons}">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{resrc.id}"/>
-                            </f:facet>
-                            <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{resrc.firstName}" />
-                            </f:facet>
-                            <h:outputText id="firstName" value="#{pers.firstName}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{pers.lastName}"/>
-                            </f:facet>
-                            <h:outputText id="lastName" value="#{pers.lastName}"/>
-                        </h:column>
-                        <h:column>
+            <h:form id="listPers">
+                <h:dataTable id="dtPersons" var="pers" value="#{cinemaBean.persons}">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.id}"/>
+                        </f:facet>
+                        <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{resrc.firstName}" />
+                        </f:facet>
+                        <h:outputText id="firstName" value="#{pers.firstName}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{pers.lastName}"/>
+                        </f:facet>
+                        <h:outputText id="lastName" value="#{pers.lastName}"/>
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">
                             <h:outputText value="#{resrc.numberMovie}"/>
                         </f:facet>
-                            <h:outputText id="countMovie" value="#{cinemaBean.countWatchingMovie(pers)}"/>
+                        <h:outputText id="countMovie" value="#{cinemaBean.countWatchingMovie(pers)}"/>
                     </h:column>
-                    </h:dataTable>
-                    <br/><br/>
+                </h:dataTable>
+                <br/><br/>
+                <!-- Bouton d'ajout d'une nouvelle personne. -->
+                <h:commandButton value="#{resrc.personAddButton}" action="addPerson"/>
+            </h:form>
+            
+            <br/><br/>
 
+            <h:form id="selectLangLink">
+                <h:commandButton image="ressources/en.jpg" action="#{langBean.toEnglish}"/>
+                <h:commandButton image="ressources/fr.png" action="#{langBean.toFrench}"/>
+            </h:form>
 
-                    <br/><br/>
-                </h:form>
-
-                <h:form id="selectLangLink">
-                    <h:commandButton image="ressources/en.jpg" action="#{langBean.toEnglish}"/>
-                    <h:commandButton image="ressources/fr.png" action="#{langBean.toFrench}"/>
-                </h:form>
-
-                <h:form id="selectLangItem">
-                    <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
-                        <f:selectItem itemValue="1" itemLabel="FR"/>
-                        <f:selectItem itemValue="2" itemLabel="EN"/>
-                    </h:selectOneMenu>
-                </h:form>
+            <h:form id="selectLangItem">
+                <h:selectOneMenu onchange="submit()" valueChangeListener="#{langBean.langChange}">
+                    <f:selectItem itemValue="1" itemLabel="FR"/>
+                    <f:selectItem itemValue="2" itemLabel="EN"/>
+                </h:selectOneMenu>
+            </h:form>
 
         </f:view>
     </body>
