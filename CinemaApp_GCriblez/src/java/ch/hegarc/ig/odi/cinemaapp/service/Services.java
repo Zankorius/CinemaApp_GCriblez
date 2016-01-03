@@ -10,6 +10,7 @@ package ch.hegarc.ig.odi.cinemaapp.service;
 
 import ch.hegarc.ig.odi.cinemaapp.business.Movie;
 import ch.hegarc.ig.odi.cinemaapp.business.Person;
+import ch.hegarc.ig.odi.cinemaapp.exceptions.UniqueException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -100,6 +101,46 @@ public class Services implements Serializable{
         return new ArrayList(movies.values());
     }
     
+    
+    /**
+     * Ajoute un film à la liste des films.
+     * 
+     * @param id identifiant unique.
+     * @param name nom du film.
+     * @param producer nom du producteur.
+     * @return Le nouveau film.
+     * @throws UniqueException si l'id est déjà attribué à un autre film.
+     */
+    public Movie saveMovie(final Long id, final String name, final String producer) throws UniqueException {
+        if(movies.containsKey(id)) {
+            throw new UniqueException("Identifiant déjà attribué à un autre film");
+        }
+        
+        Movie movie = new Movie(id, name, producer);
+        movies.put(id, movie);
+        
+        return movie;
+    }
+    
+    /**
+     * Ajoute une personne à la liste des personnes.
+     * 
+     * @param id identifiant unique
+     * @param firstName prénom de la personne
+     * @param lastName nom de la persone
+     * @return La nouvelle personne.
+     * @throws UniqueException si l'id est déjà attribué à une autre personne.
+     */
+    public Person savePerson(final Long id, final String firstName, final String lastName) throws UniqueException {
+        if(people.containsKey(id)) {
+            throw new UniqueException("Identifiant déjà attribué à une autre personne");
+        }
+        
+        Person person = new Person(id, firstName, lastName);
+        people.put(id, person);
+        
+        return person;
+    }
     
 }
 
