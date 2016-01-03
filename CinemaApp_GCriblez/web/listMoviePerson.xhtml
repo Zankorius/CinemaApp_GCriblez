@@ -28,7 +28,7 @@ and open the template in the editor.
                 <h:dataTable id="dtMovies" var="mov" value="#{cinemaBean.movies}">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ID"/>
+                            <h:outputText value="#{resrc.id}"/>
                         </f:facet>
                         <h:commandLink id="id" value="#{mov.id}" action="#{viewMovieBean.showMovie(mov)}"/>
                     </h:column>
@@ -63,7 +63,7 @@ and open the template in the editor.
                     <h:dataTable id="dtPersons" var="pers" value="#{cinemaBean.persons}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="ID"/>
+                                <h:outputText value="#{resrc.id}"/>
                             </f:facet>
                             <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
                         </h:column>

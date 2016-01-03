@@ -23,7 +23,7 @@ and open the template in the editor.
 
 
             <h:panelGrid border="0" columns="2">
-                <h:outputLabel value="ID : " />
+                <h:outputLabel value="#{resrc.id} : " />
                 <h:outputText value="#{viewMovieBean.movie.id}" />
                 <h:outputLabel value="#{resrc.filmName} : " />
                 <h:outputText value="#{viewMovieBean.movie.name}" />
@@ -40,7 +40,7 @@ and open the template in the editor.
                 <h:dataTable id="dtPersons" var="pers" value="#{viewMovieBean.movie.persons}">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="ID"/>
+                            <h:outputText value="#{resrc.id}"/>
                         </f:facet>
                         <h:commandLink id="id" value="#{pers.id}" action="#{viewPersonBean.showPerson(pers)}"/>
                     </h:column>

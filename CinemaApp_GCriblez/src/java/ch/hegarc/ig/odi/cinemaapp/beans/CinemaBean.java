@@ -10,6 +10,7 @@ import ch.hegarc.ig.odi.cinemaapp.business.Person;
 import ch.hegarc.ig.odi.cinemaapp.service.Services;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.DataModel;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
  * @author gary.criblez
  */
 @Named(value = "cinemaBean")
-@SessionScoped
+@RequestScoped
 public class CinemaBean implements Serializable {
     
     @Inject
